@@ -59,14 +59,14 @@ public class TestTeleOp extends MVMSTeleOpTelemetry {
 
         if (out) {
             tumbler.setPower(-1);
-        } else {
-            tumbler.setPower(0);
-        }
+        } //else {
+            //tumbler.setPower(0);
+        //}
         if (in) {
             tumbler.setPower(1);
-        } else {
-            tumbler.setPower(0);
-        }
+        } //else {
+            //tumbler.setPower(0);
+        //}
     }
 
 

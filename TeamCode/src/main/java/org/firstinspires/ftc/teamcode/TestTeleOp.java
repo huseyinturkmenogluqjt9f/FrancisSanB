@@ -64,6 +64,7 @@ public class TestTeleOp extends MVMSTeleOpTelemetry {
 
         if (out) {
             tumbler.setPower(-1);
+
         } else {
             if (in) {
                 tumbler.setPower(1);
@@ -71,9 +72,9 @@ public class TestTeleOp extends MVMSTeleOpTelemetry {
                 tumbler.setPower(0);
             }
         }
-
-
     }
+
+
 
 
     double scaleInput(double dVal)  {

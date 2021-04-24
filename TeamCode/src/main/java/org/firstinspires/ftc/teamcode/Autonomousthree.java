@@ -9,7 +9,7 @@ import java.util.Timer;
  * Created by Francis on 11/19/2016.
  * Stolen by Andrew on 11/22/2016
  */
-public class PacoTacoAutonomous extends LinearOpMode{
+public class Autonomousthree extends LinearOpMode{
 
     DcMotor leftfrontMotor;
     DcMotor leftbackMotor;
@@ -28,7 +28,11 @@ public class PacoTacoAutonomous extends LinearOpMode{
 
         waitForStart();
 
-        tankdrive(1, 1, 1000);
+        tankdrive(-0.3, -0.3, 1400);
+        tankdrive(-0.3, 0.3, 600);
+        tankdrive(-0.3, -0.3, 1500);
+        tankdrive(0,0,800);
+        tankdrive(-0.3, 0.3,600);
 
     }
 

@@ -1,14 +1,18 @@
 package org.firstinspires.ftc.teamcode;
 
+
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-/**
- * Created by Francis on 11/19/2016.
- */
-public class PacoTacoAutonomous extends LinearOpMode{
+import java.util.Timer;
 
-    DcMotor leftfrontMotor;
+/**
+
+ * Created by Aakarsh on 11/19/2016.
+ */
+public class AakarshAutonomous extends LinearOpMode {
+
+    DcMotor leftfrontMotor;     //identify the motors and sensors
     DcMotor leftbackMotor;
     DcMotor rightfrontMotor;
     DcMotor rightbackMotor;
@@ -25,27 +29,29 @@ public class PacoTacoAutonomous extends LinearOpMode{
 
         waitForStart();
 
-        tankdrive(0.3, 0.3, 1000);
+        tankdrive(1, 1, 1000);
 
     }
 
-    private void tankdrive(double rightY, double leftY, long sleepAmount) throws InterruptedException{
+    private void tankdrive(double leftY, double rightY, long sleepAmount) throws InterruptedException {
 
-        rightY = -rightY;
+        rightY = -rightY;               //flip the power of the right side
 
         leftfrontMotor.setPower(leftY); //set the according power to each motor
         leftbackMotor.setPower(leftY);
         rightfrontMotor.setPower(rightY);
         rightbackMotor.setPower(rightY);
 
-        sleep(sleepAmount);             //this is the amount the robot will run in milliseconds
+        sleep(sleepAmount);
 
-        leftfrontMotor.setPower(0);     //make sure that the all motors are set to zero afterward
+        leftfrontMotor.setPower(0); //set the according power to each motor
         leftbackMotor.setPower(0);
         rightfrontMotor.setPower(0);
         rightbackMotor.setPower(0);
 
+
+
+
+
     }
-
-
 }

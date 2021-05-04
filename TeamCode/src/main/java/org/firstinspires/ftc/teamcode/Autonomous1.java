@@ -4,9 +4,9 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
 /**
- * Created by Francis on 11/19/2016.
+ * Created by Rosa on 11/21/2016.
  */
-public class PacoTacoAutonomous extends LinearOpMode{
+public class Autonomous1 extends LinearOpMode {
 
     DcMotor leftfrontMotor;
     DcMotor leftbackMotor;
@@ -26,6 +26,9 @@ public class PacoTacoAutonomous extends LinearOpMode{
         waitForStart();
 
         tankdrive(0.3, 0.3, 1000);
+        tankdrive(0.3, -0.3, 500);
+        tankdrive(0.3, 0.3, 1000);
+
 
     }
 
@@ -46,6 +49,4 @@ public class PacoTacoAutonomous extends LinearOpMode{
         rightbackMotor.setPower(0);
 
     }
-
-
 }

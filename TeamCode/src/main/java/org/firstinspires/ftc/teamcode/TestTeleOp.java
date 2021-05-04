@@ -13,7 +13,8 @@ public class TestTeleOp extends MVMSTeleOpTelemetry {
     DcMotor leftfront_motor;
     DcMotor rightfront_motor;
     DcMotor tumbler;
-    DcMotor shooter;
+    //DcMotor kicker;
+   // DcMotor shooter;
 
     @Override
     public void init() {
@@ -21,8 +22,9 @@ public class TestTeleOp extends MVMSTeleOpTelemetry {
         leftfront_motor = hardwareMap.dcMotor.get("leftfront_motor");   //of the motors in the
         rightback_motor = hardwareMap.dcMotor.get("rightback_motor");   //configure file on the
         rightfront_motor = hardwareMap.dcMotor.get("rightfront_motor"); //phone
-        tumbler = hardwareMap.dcMotor.get("tumbler");
-        shooter = hardwareMap.dcMotor.get("shooter");
+        tumbler = hardwareMap.dcMotor.get("tublr");
+        //kicker = hardwareMap.dcMotor.get("kicker");
+        //shooter = hardwareMap.dcMotor.get("shooter");
     }
 
 
@@ -33,15 +35,15 @@ public class TestTeleOp extends MVMSTeleOpTelemetry {
         float leftY = -gamepad1.left_stick_y;   //and right joysticks
         boolean in = gamepad1.left_bumper;
         boolean out = gamepad1.right_bumper;
-        float tumble = gamepad1.right_trigger;
-        float shoot = gamepad1. left_trigger;
+        //boolean kick = gamepad1.a;
+        //float shoot = gamepad1.right_trigger;
 
-        telemetry.addData("RightY", rightY);    //print out the current y axis of both joysticks
-        telemetry.addData("LeftY", leftY);
+        telemetry.addData("rightY", rightY);    //print out the current y axis of both joysticks
+        telemetry.addData("leftY", leftY);
         telemetry.addData("out", out);
         telemetry.addData("in", in);
-        telemetry.addData("tumbler", tumbler);
-        telemetry.addData("shooter", shoot);
+        //telemetry.addData("kick", kick);
+        //telemetry.addData("shoot", shoot);
 
         leftY = (float) scaleInput(leftY);      //use the scaleInput function on the power to scale
         rightY = (float) scaleInput(rightY);    //it
@@ -50,7 +52,7 @@ public class TestTeleOp extends MVMSTeleOpTelemetry {
         if (gamepad1.right_bumper) {
             leftY = leftY / 2;
             rightY = rightY / 2;
-        }                                       //this is for
+        }                                       //this is for dividing the motor power in half
         if (gamepad1.left_bumper) {
             leftY = leftY / 4;
             rightY = rightY / 4;
@@ -61,20 +63,35 @@ public class TestTeleOp extends MVMSTeleOpTelemetry {
         rightback_motor.setPower(rightY);
         leftfront_motor.setPower(leftY);
         rightfront_motor.setPower(rightY);
-        tumbler.setPower(tumble);
-        shooter.setPower(shoot);
+        //shooter.setPower(shoot);
 
-        if (out) {
-            tumbler.setPower(-1);
-        } //else {
-            //tumbler.setPower(0);
-        //}
-        if (in) {
+        /*if (kick) {
+            kicker.setPower(1);
+        }*/
+
+        if (!out && !in) {
+            tumbler.setPower(0);
+        }
+        if(out) {
             tumbler.setPower(1);
-        } //else {
-            //tumbler.setPower(0);
-        //}
+        }
+        if(in) {
+            tumbler.setPower(-1);
+        }
+
+        /*if (out) {
+            tumbler.setPower(-1);
+
+        } else {
+            if (in) {
+                tumbler.setPower(1);
+            } else {
+                tumbler.setPower(0);
+            }
+        }*/
     }
+
+
 
 
     double scaleInput(double dVal)  {

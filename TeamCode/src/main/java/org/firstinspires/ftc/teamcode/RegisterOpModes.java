@@ -31,14 +31,8 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
 package org.firstinspires.ftc.teamcode;
 
-import android.hardware.Sensor;
-import android.util.Log;
-
 import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeRegistrar;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-
-import org.firstinspires.ftc.robotcontroller.external.samples.*;
 
 /**
  * This class demonstrates how to manually register opmodes.
@@ -83,7 +77,11 @@ public class RegisterOpModes
 
         //  Concept Samples
         // manager.register("Null Op",                ConceptNullOp.class);
-        manager.register("PacoTacoTeleOp",TestTeleOp.class);
+        manager.register("PacoTacoTeleOp",MVMSTeleOp.class);
         manager.register("PacoTacoAutonomous", PacoTacoAutonomous.class);
+        manager.register("AutonomousRed", Autonomous1.class);
+        //manager.register("AutonomousRorange", Autonomous2.class);
+        //manager.register("AutonomousOrange", Autonomous3.class);
+        manager.register("AutonomousYellow", Autonomous_4.class);
     }
 }

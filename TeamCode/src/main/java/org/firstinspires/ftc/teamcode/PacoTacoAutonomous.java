@@ -26,7 +26,7 @@ public class PacoTacoAutonomous extends LinearOpMode{
 
         waitForStart();
 
-        tankdrive(0.3, 0.3, 1000);
+        encoderDrive(1, 1, 1);
 
     }
 
@@ -48,5 +48,41 @@ public class PacoTacoAutonomous extends LinearOpMode{
 
     }
 
+    private void encoderTankDrive(double leftY, double rightY) throws InterruptedException {
+        rightY = -rightY;
 
+        leftfrontMotor.setPower(leftY); //set the according power to each motor
+        leftbackMotor.setPower(leftY);
+        rightfrontMotor.setPower(rightY);
+        rightbackMotor.setPower(rightY);
+    }
+
+    private void encoderDrive(double rightY, double leftY, int encoderAmount) throws InterruptedException {
+        rightY = -rightY;
+        encoderAmount = encoderAmount*1440;
+
+        leftbackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightbackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        leftfrontMotor.setTargetPosition(encoderAmount);
+        rightfrontMotor.setTargetPosition(encoderAmount);
+
+        leftbackMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightbackMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        encoderTankDrive(rightY, leftY);
+
+        while (leftbackMotor.isBusy() && rightbackMotor.isBusy()) {
+            //just so that it is running, nothing has to be in here
+            //including Paco's lunch and Andrews Dinner
+        }
+
+        encoderTankDrive(0, 0);
+
+        leftbackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightbackMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftfrontMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        rightfrontMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+    }
 }

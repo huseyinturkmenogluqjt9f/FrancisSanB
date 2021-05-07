@@ -2,17 +2,19 @@ package org.firstinspires.ftc.teamcode;
 
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 
 
 /**
  * Created by Juan Pablo Martinez on 11/29/2015.
  */
-public class TestTeleOp extends MVMSTeleOpTelemetry {
+public class MVMSTeleOp extends MVMSTeleOpTelemetry {
     DcMotor leftback_motor;     //identify all of the motors
     DcMotor rightback_motor;
     DcMotor leftfront_motor;
     DcMotor rightfront_motor;
     DcMotor tumbler;
+    Servo Beacon;
     //DcMotor kicker;
    // DcMotor shooter;
 
@@ -23,6 +25,7 @@ public class TestTeleOp extends MVMSTeleOpTelemetry {
         rightback_motor = hardwareMap.dcMotor.get("rightback_motor");   //configure file on the
         rightfront_motor = hardwareMap.dcMotor.get("rightfront_motor"); //phone
         tumbler = hardwareMap.dcMotor.get("tublr");
+        Beacon = hardwareMap.servo.get("Bacon");
         //kicker = hardwareMap.dcMotor.get("kicker");
         //shooter = hardwareMap.dcMotor.get("shooter");
     }
@@ -35,6 +38,7 @@ public class TestTeleOp extends MVMSTeleOpTelemetry {
         float leftY = -gamepad1.left_stick_y;   //and right joysticks
         boolean in = gamepad1.left_bumper;
         boolean out = gamepad1.right_bumper;
+        boolean BeaconIn = gamepad1.a;
         //boolean kick = gamepad1.a;
         //float shoot = gamepad1.right_trigger;
 
@@ -42,6 +46,7 @@ public class TestTeleOp extends MVMSTeleOpTelemetry {
         telemetry.addData("leftY", leftY);
         telemetry.addData("out", out);
         telemetry.addData("in", in);
+        telemetry.addData("in beacon", BeaconIn);
         //telemetry.addData("kick", kick);
         //telemetry.addData("shoot", shoot);
 
@@ -58,6 +63,12 @@ public class TestTeleOp extends MVMSTeleOpTelemetry {
             rightY = rightY / 4;
         }*/
 
+        if (BeaconIn) {
+            Beacon.setPosition(0.2);
+            return;
+        } else {
+            Beacon.setPosition(-1.0);
+        }
 
         leftback_motor.setPower(leftY);         //set the power to each corresponding motor
         rightback_motor.setPower(rightY);
@@ -79,16 +90,6 @@ public class TestTeleOp extends MVMSTeleOpTelemetry {
             tumbler.setPower(-1);
         }
 
-        /*if (out) {
-            tumbler.setPower(-1);
-
-        } else {
-            if (in) {
-                tumbler.setPower(1);
-            } else {
-                tumbler.setPower(0);
-            }
-        }*/
     }
 
 

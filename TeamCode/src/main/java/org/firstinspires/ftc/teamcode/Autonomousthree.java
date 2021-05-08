@@ -15,7 +15,7 @@ public class Autonomousthree extends LinearOpMode{
     DcMotor leftbackMotor;
     DcMotor rightfrontMotor;
     DcMotor rightbackMotor;
-    DcMotor tumbler;
+    /////////////////////////DcMotor tumbler;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -24,7 +24,7 @@ public class Autonomousthree extends LinearOpMode{
         leftbackMotor = hardwareMap.dcMotor.get("leftback_motor");       //and compare it to the motors/sensors
         rightfrontMotor = hardwareMap.dcMotor.get("rightfront_motor");  //in the code
         rightbackMotor = hardwareMap.dcMotor.get("rightback_motor");
-        tumbler = hardwareMap.dcMotor.get("tublr");
+        /////////////tumbler = hardwareMap.dcMotor.get("tublr");
 
         waitForStart();
 

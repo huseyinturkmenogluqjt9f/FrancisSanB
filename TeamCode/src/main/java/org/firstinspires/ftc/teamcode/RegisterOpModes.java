@@ -85,5 +85,7 @@ public class RegisterOpModes
         // manager.register("Null Op",                ConceptNullOp.class);
         manager.register("PacoTacoTeleOp",TestTeleOp.class);
         manager.register("PacoTacoAutonomous", PacoTacoAutonomous.class);
+        manager. register("Autonomous Orange", Autonomousthree.class);
+
     }
 }

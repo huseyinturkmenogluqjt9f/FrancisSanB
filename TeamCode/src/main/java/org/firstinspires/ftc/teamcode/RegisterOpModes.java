@@ -84,6 +84,7 @@ public class RegisterOpModes
         //  Concept Samples
         // manager.register("Null Op",                ConceptNullOp.class);
         manager.register("PacoTacoTeleOp",TestTeleOp.class);
+        manager.register("AutonomousRorange", Autonomous2.class);
         manager.register("PacoTacoAutonomous", PacoTacoAutonomous.class);
         manager. register("Autonomous Orange", Autonomousthree.class);
 

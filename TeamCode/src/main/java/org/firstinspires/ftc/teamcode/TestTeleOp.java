@@ -81,17 +81,22 @@ public class TestTeleOp extends MVMSTeleOpTelemetry {
 
         /*if (out) {
             tumbler.setPower(-1);
-
-        } else {
-            if (in) {
-                tumbler.setPower(1);
-            } else {
-                tumbler.setPower(0);
+        }
+        if (in)  {
+            tumbler.setPower(1);
             }
+<<<<<<< HEAD
+        if (!in || out)   {
+            tumbler.setPower(0);
+        }
+
+        }
+
+
+
+=======
         }*/
     }
-
-
 
 
     double scaleInput(double dVal)  {

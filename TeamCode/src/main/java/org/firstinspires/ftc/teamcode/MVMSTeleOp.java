@@ -91,8 +91,19 @@ public class MVMSTeleOp extends MVMSTeleOpTelemetry {
         }
 
     }
+        /*if (out) {
+            tumbler.setPower(-1);
+        }
+        if (in)  {
+            tumbler.setPower(1);
+            }
 
+        if (!in || out)   {
+            tumbler.setPower(0);
+        }
 
+        }
+        }*/
 
 
     double scaleInput(double dVal)  {

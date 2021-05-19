@@ -3,20 +3,16 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-import java.util.Timer;
-
 /**
- * Created by Francis on 11/19/2016.
- * Stolen by Andrew on 11/22/2016
+ * Created by Aakarsh on 11/21/2016.
  */
-public class Autonomousthree extends LinearOpMode{
+public class Autonomous2 extends LinearOpMode {
 
-    DcMotor leftfrontMotor;
+    DcMotor leftfrontMotor;     //identify the motors and sensors
     DcMotor leftbackMotor;
     DcMotor rightfrontMotor;
     DcMotor rightbackMotor;
     DcMotor tumbler;
-    /////////////////////////DcMotor tumbler;
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -29,74 +25,20 @@ public class Autonomousthree extends LinearOpMode{
 
         waitForStart();
 
-        /*tankdrive(-0.3, -0.3, 1200); //use rightY leftY for this cod
-        tankdrive(-0.3, 0.3, 1600);
-
-        tankdrive(-0.3, -0.3, 1000);
-        tankdrive(0.3, -0.3, 1600);
-        tankdrive(-0.3, -0.3, 400);
-        tankdrive(0, 0, 500);
-        tankdrive(0.3, 0.3, 400);
-
-        tankdrive(-0.3, 0.3, 1600);
-        tankdrive(-0.3, -0.3, 1000);
-        tankdrive(-0.3, 0.3, 600);
-        tankdrive(-0.3, -0.3, 2000);*/
-
-//*
-        /*tankdrive(-0.3, -0.3, 1200);
-        tankdrive(0.3, -0.3, 1800);
-        tankdrive(-0.3, -0.3, 1600);
-        tankdrive(-0.3, 0.3, 2300);
-        tankdrive(0.3, 0.3, 2200);
-        tumblerdrive(-0.6, 1000);
-
-        tankdrive(-0.3, -0.3, 2500);
-        tankdrive(0.3, -0.3, 3000);
-        tankdrive(0.3, 0.3, 2500);
-       // encoderdrive(0.5, 0.5, 1);
-       */
-        tankdrive(-0.3, -0.3, 800) ;
-        tankdrive(0.3, -0.3, 550);
+        tankdrive(-0.3, -0.3, 800);
+        tankdrive(-0.3, 0.3, 550);
         tankdrive(-0.4, -0.4, 1000);
         tankdrive(0.3, 0.3, 205);
-        tankdrive(0.3, -0.3, 4075);
+        tankdrive(-0.3, 0.3, 4050);
         tankdrive(0.3, 0.3, 2600);
-        tumblerdrive(-1, 1000);
+        tumblerDrive(-1, 1000);
+
+
     }
 
+    private void tankdrive(double leftY, double rightY, long sleepAmount) throws InterruptedException {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    private void tumblerdrive(double power, long sleepamount){
-        tumbler.setPower(power);
-        sleep(sleepamount);
-        tumbler.setPower(0);
-    }
-    private void tankdrive(double leftY, double rightY, long sleepAmount) throws InterruptedException{
-
-        rightY = -rightY;
+        rightY = -rightY;               //flip the power of the right side
 
         leftfrontMotor.setPower(leftY); //set the according power to each motor
         leftbackMotor.setPower(leftY);
@@ -109,9 +51,22 @@ public class Autonomousthree extends LinearOpMode{
         leftbackMotor.setPower(0);
         rightfrontMotor.setPower(0);
         rightbackMotor.setPower(0);
-
     }
+
+    private void tumblerDrive(double power, long sleepAmount) throws InterruptedException {
+
+        tumbler.setPower(power);
+
+        sleep(sleepAmount);
+
+        tumbler.setPower(0);
+    }
+
+
+
+
     private void encoderTankDrive(double leftY, double rightY) throws InterruptedException {
+
         rightY = -rightY;
 
 
@@ -124,7 +79,7 @@ public class Autonomousthree extends LinearOpMode{
 
     private void encoderDrive(double rightY, double leftY, int encoderAmount) throws InterruptedException {
         rightY = -rightY;
-        encoderAmount = encoderAmount*1440;
+        encoderAmount = encoderAmount * 1440;
 
 
         leftbackMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -156,6 +111,4 @@ public class Autonomousthree extends LinearOpMode{
         leftfrontMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         rightfrontMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
-
-
 }
